@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SweepStakes
 {
-    class SweepStakes
+    public class SweepStakes
     {
         //member variables
         Dictionary<int, Contestant> contestants;

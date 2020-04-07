@@ -10,18 +10,19 @@ namespace SweepStakes
     {
 
         //member variables
-        ISweepStakesManager manager;
+        public ISweepStakesManager manager;
 
         //constructor
         public MarketingFirm(ISweepStakesManager manager) //dependency injection
         {
-
+            this.manager = manager;
         }
 
         //member methods
         public void CreateSweepStake()
         {
            SweepStakes sweepStakes = new SweepStakes( UserInterface.GetUserInputFor("What would you like to call your Sweepstakes?"));
+            manager.InsertSweepStakes(sweepStakes);
 
         }
         
