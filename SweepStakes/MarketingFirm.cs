@@ -13,7 +13,7 @@ namespace SweepStakes
         ISweepStakesManager manager;
 
         //constructor
-        public MarketingFirm(ISweepStakesManager manager)
+        public MarketingFirm(ISweepStakesManager manager) //dependency injection
         {
 
         }
@@ -21,6 +21,7 @@ namespace SweepStakes
         //member methods
         public void CreateSweepStake()
         {
+           SweepStakes sweepStakes = new SweepStakes( UserInterface.GetUserInputFor("What would you like to call your Sweepstakes?"));
 
         }
         

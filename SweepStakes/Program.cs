@@ -10,31 +10,43 @@ namespace SweepStakes
     {
         static void Main(string[] args)
         {
+
+            ISweepStakesManager sweepStakesManager = UserInterface.GetChoiceOfManager();
+            MarketingFirm marketingFirm = new MarketingFirm(sweepStakesManager);
+            marketingFirm.CreateSweepStake();
+
+
+
             
-            SweepStakes sweep = new SweepStakes("wincar");
+            SweepStakes current = marketingFirm.manager.GetSweepStakes();
 
             while (true)
             {
                 Contestant contestant = new Contestant();
-                string answer = UserInterface.GetUserInputFor("Would you like to enter for the sweepstakes?");
+                string answer = UserInterface.GetUserInputFor("Type Enter to enter contestant info for the sweepstakes. Type end to end entry submissions.");
                 
 
-                if (answer == "yes")
+                if (answer == "enter")
                 {
-                    sweep.RegisterContestant(contestant);
+                   current.RegisterContestant(contestant);
                     Console.Clear();
+                }
+                else if (answer == "end")
+                {
+                    Console.Clear();
+                    break;
                 }
                 else
                 {
-                    break;
+                    Console.WriteLine("invalid entry, try again");
                 }
 
 
 
             }
-
-            Contestant winner = sweep.pickWinner();
-            sweep.PrintContestantInfo(winner);
+            Console.WriteLine("Press enter to pick winner");
+            Contestant winner = current.pickWinner();
+            current.PrintContestantInfo(winner);
             Console.ReadLine();
             
             
