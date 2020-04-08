@@ -17,7 +17,8 @@ namespace SweepStakes
         //member methods
         public void CreateMarketingFirmWithManager()
         {
-
+            ISweepStakesManager sweepStakesManager = UserInterface.GetChoiceOfManager();
+            MarketingFirm marketingFirm = new MarketingFirm(sweepStakesManager);
         }
     }
 }
